@@ -34,6 +34,8 @@ html {
   background-size: cover;
   min-height: 100vh;
   background-image: linear-gradient(to bottom, transparent -22%, #fe8029 41%);
+  overflow: auto;
+
 }
 .contenedor-navbar {
   z-index: 2;

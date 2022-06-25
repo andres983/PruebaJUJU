@@ -1,34 +1,81 @@
-<div class="contenedor">
-  <div class="card__container">
+<div class="contenedor" >
+
+  <!-- COM Filtros -->
+  <div class="filtro">
+    <div class="filtro__buscar">
+      <input class="filtro__input" #inputSearch type="text" placeholder="Search for Name Character..."
+        (keyup)="buscarPersonaje(inputSearch.value)">
+    </div>
+    <div class="filtro__genero">
+      <input class="filtro__input" #inputSearch type="text" placeholder="Search for Name Character..."
+        (keyup)="buscarPersonaje(inputSearch.value)">
+    </div>
+  </div>
+
+
+  <!-- COM Cards Characters -->
+  <div class="card__container" infiniteScroll  (scrolled)="onScrollDown()" >
     <div class="card__card" *ngFor="let character of characters">
       <div class="card__contenedorImagen">
-        <img class="card__imagen" src="{{character.image}}" alt="">
+        <img class="card__imagen" src="{{character.image}}" alt="{{character.name | uppercase}}">
       </div>
       <div class="card__Contenedores card__Contenedores--nombre">
-        <h4 class="card__labels card__labels--name">{{character.name | uppercase}}</h4>
+        <h4 class="card__labels card__labels--name">{{character.name }}</h4>
       </div>
       <div class="card__Contenedores card__Contenedores--genero">
         <h4 class="card__labels card__labels--genero">{{character.gender | uppercase}}</h4>
       </div>
-      <!-- <div class="card__Contenedores card__Contenedores--creado">
-        <h4 class="card__labels card__labels--creado">{{character.created | date}}</h4>
-      </div> -->
       <div class="card__Contenedores card__ContenedorBoton">
-        <button type="button" class="card__button" (click)="detallePersonaje(character)">Info</button>
+        <button type="button" class="card__button" (click)="obtenerDetallePersonaje(character)">+Info</button>
       </div>
     </div>
   </div>
 </div>
 
 
-<!-- Modal -->
+<!--COM Modal *** -->
 <div class="modal" *ngIf="modalVisibleDetalle" (click)="cerrarModal()">
   <div class="modal__contenedor">
-    <div class="modal__contenedorIcono">
-      <img src="../../../../../assets/logo/pepino.png" alt="imagen pepino">
+    <div class="modal__nombrePersonaje">
+      <h4>{{characterModal.name | uppercase}}</h4>
+    </div>
+    <div class="modal__tipo">
+      <h5 class="modal__labelTipo">Type: <span>{{characterModal.type === ''? 'UNKNOWN': characterModal.type |
+          uppercase}}</span></h5>
+    </div>
+    <div class="modal__contenedorIcono" (click)="cerrarModal()">
+      <img class="modal__personajePepino" src="../../../../../assets/logo/pepino.png" alt="imagen pepino">
     </div>
     <div class="modal__contenedorBoton">
       <label for="" class="modal__botonCerrar" (click)="cerrarModal()">X</label>
     </div>
+    <div class="modal__contenedorInformacion">
+      <div class="modal__imagenPersonaje">
+        <img src="{{characterModal.image}}" alt="{{characterModal.name }}">
+      </div>
+      <div class="modal__infos">
+        <div class="modal__info">
+          <h5 class="modal__label">Gender: <span>{{characterModal.gender | uppercase}}</span></h5>
+        </div>
+        <div class="modal__info">
+          <h5 class="modal__label">Especies: <span>{{characterModal.species | uppercase}}</span></h5>
+        </div>
+        <div class="modal__info">
+          <h5 class="modal__label">Status: <span>{{characterModal.status | uppercase}}</span></h5>
+        </div>
+
+        <div class="modal__info">
+          <h5 class="modal__label">Origin: <span>{{characterModal.origin.name | uppercase}}</span></h5>
+        </div>
+        <div class="modal__info">
+          <h5 class="modal__label">Created: <span>{{characterModal.created | date}}</span></h5>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- COM Boton ir Arriba -->
+<button [ngClass]="'no-hidden'" *ngIf="mostrarBotonIrArrima" class="botonirArriba" (click)="onScrollTop()">
+Go Up
+</button>

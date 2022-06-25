@@ -32,9 +32,6 @@ body,
   font-family: var(--fuentePrincipal);
   font-size: 1.6rem;
 
-  font-family: var(--fuentePrincipal);
-  font-size: 1.6rem;
-
   width: 100%;
   height: 100vh;
   display: flex;
@@ -70,14 +67,54 @@ a {
 .contenedor {
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 12rem;
+  padding-top: 8rem;
   width: 93%;
+  overflow: auto;
 }
+
+/* COM Filtros */
+.filtro {
+  height: 70px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.filtro__buscar {
+  flex: 1 100%;
+  display: flex;
+  justify-content: center;
+}
+.filtro__input {
+  height: 36px;
+  width: 100%;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 3rem;
+  border-color: transparent;
+  background: var(--gris);
+  box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
+}
+
+.filtro__input::placeholder {
+  padding-left: 1rem;
+}
+
+.filtro__genero {
+  flex: 1 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* COM Cards */
 .card__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   row-gap: 7rem;
   column-gap: 2rem;
+  margin-top: 5rem;
 }
 .card__card {
   position: relative;
@@ -90,7 +127,6 @@ a {
   transition-duration: 0.3s;
   display: flex;
   flex-direction: column;
-  /* transition: all 0.2s ease-in-out; */
 }
 
 .card__contenedorImagen {
@@ -103,7 +139,7 @@ a {
   transform: translate(-50%);
   background-color: var(--blanco);
   border-radius: 20px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+  box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
   -webkit-backdrop-filter: blur(7px);
   backdrop-filter: blur(7px);
 }
@@ -119,14 +155,6 @@ a {
   transition: height 0.6s ease-in-out;
 }
 
-/* .card__card:hover {
-  transform: scale(1, 1.5);
-  -webkit-transform: scale(1, 1.5);
-  -moz-transform: scale(1, 1.5);
-  -ms-transform: scale(1, 1.5);
-  -o-transform: scale(1, 1.5);
-  z-index: 1;
-} */
 .card__Contenedores {
   flex: 1 auto;
   display: flex;
@@ -173,8 +201,13 @@ a {
   height: 30px;
   margin-left: auto;
   margin-right: auto;
-  background-color: var(--primario);
-  color: var(--blanco);
+  background-image: url(../../../../../assets/general/portal.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: var(--secundario);
+  font-weight: 700;
   border-radius: 3rem;
   border-color: transparent;
   font-size: 1.2rem;
@@ -195,8 +228,8 @@ a {
 }
 
 .modal__contenedor {
-  width: 400px;
-  height: 300px;
+  width: 300px;
+  height: 430px;
   margin: auto;
   background: var(--blanco);
   box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
@@ -205,11 +238,49 @@ a {
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+  padding: 1.5rem;
+}
+
+.modal__nombrePersonaje {
+  display: flex;
+  flex: 1 20%;
+  position: absolute;
+  top: 10px;
+  left: 27px;
+  width: 100%;
+  height: 20px;
+}
+.modal__nombrePersonaje h4 {
+  color: var(--naranja);
+}
+.modal__tipo{
+  display: flex;
+  flex: 1 20%;
+  position: absolute;
+  top: 40px;
+  left: 27px;
+  width: 100%;
+  height: 20px;
+}
+
+.modal__labelTipo{
+  color: var(--primario);
+  font-size: 1rem;
 }
 
 .modal__contenedorIcono {
   display: flex;
   flex: 1 20%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.modal__personajePepino {
+  height: 4.2rem;
+  transform: translate(25px, -26px);
+  cursor: pointer;
 }
 .modal__contenedorBoton {
   display: flex;
@@ -221,13 +292,81 @@ a {
   top: 10px;
   right: 10px;
   color: var(--naranja);
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
+  font-weight: 700;
+}
+
+.modal__contenedorInformacion {
+  position: absolute;
+  top: 100px;
+  width: 90%;
+  display: grid;
+  grid-template-row: repeat(2, 1fr);
+}
+
+.modal__imagenPersonaje {
+  width: 51%;
+  box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 3rem;
+  height: 11rem;
+  margin: auto;
+}
+
+.modal__imagenPersonaje img {
+  object-fit: cover;
+  border-radius: 3rem;
+  height: 11rem;
+}
+
+.modal__infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+.modal__info {
+  display: flex;
+  width: 100%;
+  height: 20px;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+  text-align: center;
+}
+.modal__label {
+  font-size: 1rem;
+  color: var(--letra);
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+.modal__label span {
+  color: var(--naranja);
+}
+
+/* COM Boton ir Arriba */
+.botonirArriba {
+  max-width: 30%;
+  border-radius: 1rem;
+  background-color: var(--primario);
+  color: var(--blanco);
+  border-color: transparent;
 }
 
 @media screen and (min-width: 768px) {
-  .contenedor {
-    padding-top: 14rem;
+  .filtro {
+    display: flex;
+    height: 40px;
+    flex-direction: row;
+    width: 100%;
+  }
+  .filtro__buscar {
+    flex: 1 50%;
+  }
+
+  .filtro__genero {
+    flex: 1 50%;
   }
   .card__container {
     grid-template-columns: repeat(auto-fit, minmax(289px, 1fr));
@@ -253,8 +392,28 @@ a {
     margin-top: 0.3rem;
   }
   .modal__contenedor {
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 400px;
+  }
+  .modal__label {
+    font-size: 1rem;
+  }
+  .modal__contenedorInformacion {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .modal__imagenPersonaje {
+    width: 98%;
+    height: 18rem;
+    margin: auto;
+  }
+  .modal__imagenPersonaje img {
+    height: 18rem;
+  }
+  .modal__infos{
+    justify-content: center left;
+  }
+  .modal__info{
+    justify-content: left;
   }
 }
 

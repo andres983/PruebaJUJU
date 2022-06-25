@@ -17,15 +17,12 @@ export class CharacterService {
 
   public buscarPersonajes(query = '', page = 1): Observable<Character[]> {
     const filtro = `${environment.api}${environment.character}?name=${query}&page=${page}`;
-    // https://rickandmortyapi.com/api/+character/?name=&page=1
-    console.log('*************');
     console.log(filtro);
-    console.log('*************');
     return this.http.get<Character[]>(filtro);
   }
 
-  public obtenerDetalle(id: number): Observable<Character> {
-    const path = `${environment.api}+${environment.character}/${id}`;
+  public obtenerDetallePersonaje(id: number): Observable<Character> {
+    const path = `${environment.api}${environment.character}${id}`;
     return this.http.get<Character>(path);
   }
 }
