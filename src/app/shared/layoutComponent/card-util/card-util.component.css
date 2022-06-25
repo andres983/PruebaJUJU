@@ -27,9 +27,17 @@ html {
 *::after {
   box-sizing: inherit;
 }
-body {
+body, .modal {
   font-family: var(--fuentePrincipal);
   font-size: 1.6rem;
+
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
 }
 img {
   max-width: 100%;
@@ -64,9 +72,19 @@ a {
 }
 
 .modal{
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 500ms ease;
 }
+.modal__contenedor{
+  width: 400px;
+  height: 300px;
+  margin: auto;
+  background: var(--blanco);
+  box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
+  transition: all 500ms ease;
+}
+
+

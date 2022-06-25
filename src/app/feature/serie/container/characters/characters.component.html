@@ -14,12 +14,21 @@
         <h4 class="card__labels card__labels--creado">{{character.created | date}}</h4>
       </div> -->
       <div class="card__Contenedores card__ContenedorBoton">
-        <button  type="button" class="card__button" (click)="detallePersonaje(character)">Info</button>
+        <button type="button" class="card__button" (click)="detallePersonaje(character)">Info</button>
       </div>
     </div>
   </div>
 </div>
 
-<ng-template #character>
-  <app-card-util></app-card-util>
-</ng-template>
+
+<!-- Modal -->
+<div class="modal" *ngIf="modalVisibleDetalle" (click)="cerrarModal()">
+  <div class="modal__contenedor">
+    <div class="modal__contenedorIcono">
+      <img src="../../../../../assets/logo/pepino.png" alt="imagen pepino">
+    </div>
+    <div class="modal__contenedorBoton">
+      <label for="" class="modal__botonCerrar" (click)="cerrarModal()">X</label>
+    </div>
+  </div>
+</div>

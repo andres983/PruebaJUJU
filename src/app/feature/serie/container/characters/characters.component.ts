@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { CharacterService } from '../../services/character.service';
 import { take } from 'rxjs/operators';
 import { Character } from 'src/app/core/modelos/Character';
@@ -15,6 +15,7 @@ type RequestInfo = {
 export class CharactersComponent implements OnInit {
 
   public characters: Character[] = [];
+  public modalVisibleDetalle = false;
 
   info: RequestInfo = {
     next: null
@@ -41,8 +42,12 @@ export class CharactersComponent implements OnInit {
       })
   }
 
-  detallePersonaje(character){
-
+  public detallePersonaje(character) {
     console.log('Character -> ', character);
+    this.modalVisibleDetalle = true;
+  }
+
+  public cerrarModal() {
+    this.modalVisibleDetalle = false;
   }
 }
