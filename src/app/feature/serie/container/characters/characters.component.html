@@ -1,0 +1,25 @@
+<div class="contenedor">
+  <div class="card__container">
+    <div class="card__card" *ngFor="let character of characters">
+      <div class="card__contenedorImagen">
+        <img class="card__imagen" src="{{character.image}}" alt="">
+      </div>
+      <div class="card__Contenedores card__Contenedores--nombre">
+        <h4 class="card__labels card__labels--name">{{character.name | uppercase}}</h4>
+      </div>
+      <div class="card__Contenedores card__Contenedores--genero">
+        <h4 class="card__labels card__labels--genero">{{character.gender | uppercase}}</h4>
+      </div>
+      <!-- <div class="card__Contenedores card__Contenedores--creado">
+        <h4 class="card__labels card__labels--creado">{{character.created | date}}</h4>
+      </div> -->
+      <div class="card__Contenedores card__ContenedorBoton">
+        <button  type="button" class="card__button" (click)="detallePersonaje(character)">Info</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #character>
+  <app-card-util></app-card-util>
+</ng-template>

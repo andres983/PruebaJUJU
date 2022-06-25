@@ -1,0 +1,55 @@
+:host {
+  --fondo: #fff9e3;
+  --primario: #00a288;
+  --secundario: #004e58;
+  --lima: #bfd12e;
+  --naranja: #fe8029;
+  --blanco: #fff;
+  --gris: #e8ebf6 0% 0% no-repeat padding-box;
+  --letra: #333333;
+  --fuentePrincipal: "Helvetica Neue", Arial, sans-serif;
+  --fuenteSecundaria: "Helvetica Neue Bold", Arial, sans-serif;
+  --tran-02: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.4s ease;
+  --tran-05: all 0.5s ease;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  line-height: 2;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.page-wrapper {
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom, transparent -22%, #fe8029 41%);
+}
+.contenedor-navbar {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  max-width: 100%;
+  height: 5rem;
+  background-color: var(--primario);
+  box-shadow: 2px 2px 2px 1px var(--naranja);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 600px) {
+  .page-wrapper {
+    background-image: linear-gradient(to bottom, transparent -15%, #fe8029 41%);
+  }
+}

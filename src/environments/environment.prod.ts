@@ -1,3 +1,8 @@
+const api = 'https://rickandmortyapi.com/api/';
+const character = 'character/';
+
 export const environment = {
-  production: true
+  production: true,
+  api,
+  character
 };

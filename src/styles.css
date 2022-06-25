@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+:host {
+  --fondo: #fff9e3;
+  --primario: #00a288;
+  --secundario: #004e58;
+  --lima: #bfd12e;
+  --naranja: #fe8029;
+  --blanco: #fff;
+  --gris: #e8ebf6 0% 0% no-repeat padding-box;
+  --letra: #333333;
+  --fuentePrincipal: "Helvetica Neue", Arial, sans-serif;
+  --fuenteSecundaria: "Helvetica Neue Bold", Arial, sans-serif;
+  --tran-02: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.4s ease;
+  --tran-05: all 0.5s ease;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+/* TODO: Fuente ******************************** */
+
+@font-face {
+  font-display: swap;
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue"), url("./assets/fonts/HelveticaNeue-Medium.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Helvetica Neue Bold";
+  font-weight: 700;
+  src: local("Helvetica_Bold"), url("./assets/fonts/HelveticaNeueBd.ttf") format("truetype");
+}
