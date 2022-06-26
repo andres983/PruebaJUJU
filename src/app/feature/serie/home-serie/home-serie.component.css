@@ -32,7 +32,6 @@ html {
 .page-wrapper {
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
   min-height: 100vh;
   background-image: linear-gradient(to bottom, transparent -22%, #fe8029 41%);
   overflow: auto;
