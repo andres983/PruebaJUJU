@@ -94,8 +94,27 @@ a {
   margin-right: auto;
   border-radius: 3rem;
   border-color: transparent;
+  padding-left: 1rem;
   background: var(--gris);
-  box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.filtro__select{
+  flex: 1 100%;
+  display: flex;
+  justify-content: center;
+  border-radius: 3rem;
+  box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.2);
+  outline: none;
+  padding-left: 1rem;
+  background: var(--gris);
+  border-color: transparent;
+  width: 100%;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  color: grey;
 }
 
 .filtro__input::placeholder {
@@ -139,7 +158,7 @@ a {
   transform: translate(-50%);
   background-color: var(--blanco);
   border-radius: 20px;
-  box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.5);
   -webkit-backdrop-filter: blur(7px);
   backdrop-filter: blur(7px);
 }

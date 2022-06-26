@@ -15,8 +15,8 @@ export class CharacterService {
 
   constructor(private http: HttpClient) { }
 
-  public buscarPersonajes(query = '', page = 1): Observable<Character[]> {
-    const filtro = `${environment.api}${environment.character}?name=${query}&page=${page}`;
+  public buscarPersonajes(query = '', gender = '', page = 1): Observable<Character[]> {
+    const filtro = `${environment.api}${environment.character}?name=${query}&gender=${gender}&page=${page}`;
     console.log(filtro);
     return this.http.get<Character[]>(filtro);
   }

@@ -19,6 +19,7 @@ export class CharactersComponent implements OnInit {
   public characters: Character[] = [];
   public characterModal: Character;
   public modalVisibleDetalle = false;
+  public selectedData = '0'
 
   info: RequestInfo = {
     next: null
@@ -28,6 +29,7 @@ export class CharactersComponent implements OnInit {
 
   public numeroPagina = 1;
   public name: string;
+  public gender: string;
   private esconderAltoScroll = 200;
   private mostrarAltoScroll = 600;
 
@@ -41,7 +43,7 @@ export class CharactersComponent implements OnInit {
   }
 
   @HostListener('window:scroll', [])
-  onWindowScroll():void {
+  onWindowScroll(): void {
     const yOffSet = window.pageYOffset;
     if (yOffSet || this.document.documentElement.scrollTop || this.document.body.scrollTop > this.mostrarAltoScroll) {
       this.mostrarBotonIrArrima = true;
@@ -63,7 +65,7 @@ export class CharactersComponent implements OnInit {
   }
 
   public obtenerPersonajes(): void {
-    this.characterService.buscarPersonajes(this.name, this.numeroPagina)
+    this.characterService.buscarPersonajes(this.name, this.gender, this.numeroPagina)
       .pipe(
         take(1))
       .subscribe((res: any) => {
@@ -100,9 +102,25 @@ export class CharactersComponent implements OnInit {
     }
   }
 
+  public generoSeleccionado() {
+
+    if (this.selectedData != '0') {
+      this.characters = [];
+      this.name = '';
+      this.gender = this.selectedData;
+      this.obtenerPersonajes();
+    } else if (this.selectedData === '0') {
+      this.characters = [];
+      this.name = '';
+      this.gender = '';
+      this.numeroPagina = 1;
+      this.obtenerPersonajes();
+    }
+  }
+
   public cerrarModal() {
     this.modalVisibleDetalle = false;
-    this.characterModal  = {};
+    this.characterModal = {};
   }
 
 

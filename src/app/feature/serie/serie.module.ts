@@ -1,9 +1,11 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SerieRoutingModule } from './serie-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
-import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MatSelectModule } from '@angular/material/select';
 
 import { HomeSerieComponent } from './home-serie/home-serie.component';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -18,7 +20,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     SerieRoutingModule,
     SharedModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    FormsModule,
+    MatSelectModule
   ],
   exports: [
     HomeSerieComponent,

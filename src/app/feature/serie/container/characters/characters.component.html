@@ -1,4 +1,4 @@
-<div class="contenedor" >
+<div class="contenedor">
 
   <!-- COM Filtros -->
   <div class="filtro">
@@ -7,14 +7,17 @@
         (keyup)="buscarPersonaje(inputSearch.value)">
     </div>
     <div class="filtro__genero">
-      <input class="filtro__input" #inputSearch type="text" placeholder="Search for Name Character..."
-        (keyup)="buscarPersonaje(inputSearch.value)">
+      <select class="filtro__select" id="selectedData" name="selectedData" [(ngModel)]="selectedData" (change)="generoSeleccionado()">
+        <option value="0">Select a gender</option>
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+      </select>
     </div>
   </div>
 
 
   <!-- COM Cards Characters -->
-  <div class="card__container" infiniteScroll  (scrolled)="onScrollDown()" >
+  <div class="card__container" infiniteScroll (scrolled)="onScrollDown()">
     <div class="card__card" *ngFor="let character of characters">
       <div class="card__contenedorImagen">
         <img class="card__imagen" src="{{character.image}}" alt="{{character.name | uppercase}}">
@@ -77,5 +80,5 @@
 
 <!-- COM Boton ir Arriba -->
 <button [ngClass]="'no-hidden'" *ngIf="mostrarBotonIrArrima" class="botonirArriba" (click)="onScrollTop()">
-Go Up
+  Go Up
 </button>
