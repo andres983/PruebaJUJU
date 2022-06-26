@@ -88,6 +88,7 @@ a {
 }
 .filtro__input {
   height: 36px;
+  min-height: 36px;
   width: 100%;
   max-width: 80%;
   margin-left: auto;
@@ -115,6 +116,9 @@ a {
   margin-left: auto;
   margin-right: auto;
   color: grey;
+  height: 36px;
+  min-height: 36px;
+  margin-top: 0.5rem;
 }
 
 .filtro__input::placeholder {
@@ -433,6 +437,9 @@ a {
   }
   .modal__info{
     justify-content: left;
+  }
+  .filtro__select{
+    margin-top: 0;
   }
 }
 

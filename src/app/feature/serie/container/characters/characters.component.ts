@@ -1,9 +1,10 @@
-import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnDestroy, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
 
 import { CharacterService } from '../../services/character.service';
 import { Character } from 'src/app/core/modelos/Character';
+import { SubSink } from 'subsink';
 
 type RequestInfo = {
   next: string;
@@ -14,7 +15,7 @@ type RequestInfo = {
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.css']
 })
-export class CharactersComponent implements OnInit {
+export class CharactersComponent implements OnInit, OnDestroy {
 
   public characters: Character[] = [];
   public characterModal: Character;
@@ -33,9 +34,12 @@ export class CharactersComponent implements OnInit {
   private esconderAltoScroll = 200;
   private mostrarAltoScroll = 600;
 
+  private sub = new SubSink();
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private readonly characterService: CharacterService) { }
+
 
   ngOnInit(): void {
     this.obtenerPersonajes();
@@ -65,7 +69,7 @@ export class CharactersComponent implements OnInit {
   }
 
   public obtenerPersonajes(): void {
-    this.characterService.buscarPersonajes(this.name, this.gender, this.numeroPagina)
+    this.sub.add(this.characterService.buscarPersonajes(this.name, this.gender, this.numeroPagina)
       .pipe(
         take(1))
       .subscribe((res: any) => {
@@ -74,17 +78,17 @@ export class CharactersComponent implements OnInit {
           this.characters = [...this.characters, ...results];
           this.info = info;
         }
-      });
+      }));
   }
 
   public obtenerDetallePersonaje(character: Character) {
-    this.characterService.obtenerDetallePersonaje(character.id)
+    this.sub.add(this.characterService.obtenerDetallePersonaje(character.id)
       .pipe(
         take(1))
       .subscribe((res: any) => {
 
         this.characterModal = res;
-      });
+      }));
     this.modalVisibleDetalle = true;
   }
 
@@ -123,5 +127,8 @@ export class CharactersComponent implements OnInit {
     this.characterModal = {};
   }
 
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 
 }

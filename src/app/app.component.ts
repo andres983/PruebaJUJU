@@ -7,7 +7,6 @@ import { SubjectsService } from './core/services/subjects.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'pruebaJUJU';
   public resize: number;
 
   constructor(private readonly subjectsService: SubjectsService) {
